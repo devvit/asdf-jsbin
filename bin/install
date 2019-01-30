@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+install() {
+  version=$2
+  install_dir=$3
+
+  build_dir=$(mktemp -d)
+  cd $build_dir
+
+  platform=$(uname)
+
+  if [ $platform == 'Darwin' ]; then
+    curl -fSL -JO https://nodejs.org/dist/v$version/node-v$version-darwin-x64.tar.gz
+  elif [ $platform == 'Linux' ]; then
+    curl -fSL -JO https://nodejs.org/dist/v$version/node-v$version-linux-x64.tar.xz
+  else
+    exit 1
+  fi
+
+  tar -xzf node*.gz
+  rm -rf node*.gz
+  mv node*/* $ASDF_INSTALL_PATH/ || exit 1
+}
+
+install $ASDF_INSTALL_TYPE $ASDF_INSTALL_VERSION $ASDF_INSTALL_PATH
