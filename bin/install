@@ -17,8 +17,8 @@ install() {
     exit 1
   fi
 
-  tar -xzf node*.gz
-  rm -rf node*.gz
+  bsdtar -xzf node*z
+  rm -rf node*z
   mv node*/* $ASDF_INSTALL_PATH/ || exit 1
 }
 
