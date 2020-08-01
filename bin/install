@@ -19,7 +19,7 @@ install() {
 
   bsdtar -xzf node*z
   rm -rf node*z
-  mv node*/* $ASDF_INSTALL_PATH/ || exit 1
+  mv node*/* $install_dir/ || exit 1
 }
 
 install $ASDF_INSTALL_TYPE $ASDF_INSTALL_VERSION $ASDF_INSTALL_PATH
